@@ -14,7 +14,7 @@ todoForm.addEventListener("submit", function (event) {
 });
 
 function addTodo(item) {
-	if (item !== "") {
+	if (item !== "" && !/\s/.test(item)) {
 		const todo = {
 			id: Date.now(),
 			name: item,
@@ -89,28 +89,13 @@ function getFromLocalStorage() {
 	}
 }
 
-// toggle the value to completed and not completed
-function toggle(id) {
-	todos.forEach(function (item) {
-		// use == not ===, because here types are different. One is number and other is string
-		if (item.id == id) {
-			// toggle the value
-			item.completed = !item.completed;
-		}
-	});
-
-	addToLocalStorage(todos);
-}
-
 // deletes a todo from todos array, then updates localstorage and renders updated list to screen
 function deleteTodo(id) {
-	// filters out the <li> with the id and updates the todos array
 	todos = todos.filter(function (item) {
 		// use != not !==, because here types are different. One is number and other is string
 		return item.id != id;
 	});
 
-	// update the localStorage
 	addToLocalStorage(todos);
 }
 
@@ -118,13 +103,6 @@ getFromLocalStorage();
 
 // listen click events
 todoItemsList.addEventListener("click", function (event) {
-	// check if the event is on checkbox
-	if (event.target.type === "checkbox") {
-		// toggle the state
-		toggle(event.target.parentElement.getAttribute("data-key"));
-	}
-
-	// check if that is a delete clicked
 	if (event.target.classList.contains("delete")) {
 		// get id from data-key attribute's value of parent of parent <div> where the delete class is present
 		deleteTodo(
