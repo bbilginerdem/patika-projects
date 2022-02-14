@@ -4,6 +4,10 @@ const todoItemsList = document.querySelector("#tasks");
 
 let todos = [];
 
+const toastTrigger = document.getElementById("new-task-submit");
+const toastLiveSuccess = document.getElementById("liveToastSuccess");
+const toastLiveFail = document.getElementById("liveToastFail");
+
 todoForm.addEventListener("submit", function (event) {
 	event.preventDefault();
 	addTodo(todoInput.value);
@@ -21,6 +25,14 @@ function addTodo(item) {
 		addToLocalStorage(todos);
 
 		todoInput.value = "";
+
+		const toast = new bootstrap.Toast(toastLiveSuccess);
+
+		toast.show();
+	} else {
+		const toast = new bootstrap.Toast(toastLiveFail);
+
+		toast.show();
 	}
 }
 
@@ -52,7 +64,7 @@ function renderTodos(todos) {
 
 		const task_delete_el = document.createElement("button");
 		task_delete_el.classList.add("delete");
-		task_delete_el.innerText = "Delete";
+		task_delete_el.innerText = "Sil";
 
 		task_actions_el.appendChild(task_delete_el);
 

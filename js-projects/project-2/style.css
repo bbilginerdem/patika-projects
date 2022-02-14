@@ -63,6 +63,10 @@ button {
 	color: var(--grey);
 }
 
+.bg-right-gradient {
+	background-image: linear-gradient(to right, var(--pink), var(--purple));
+}
+
 #new-task-submit {
 	color: var(--pink);
 	font-size: 1.25rem;
