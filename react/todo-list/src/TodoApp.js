@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Items from "./Items";
 import AddItems from "./AddItems";
-import Footer from "./Footer";
 
 export class TodoApp extends Component {
 	state = {
@@ -33,7 +32,6 @@ export class TodoApp extends Component {
 						items={this.state.items}
 						deleteItems={this.deleteItems}
 					/>
-					<Footer />
 				</div>
 			</>
 		);
