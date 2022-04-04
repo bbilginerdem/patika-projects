@@ -18,11 +18,33 @@ const data = [
 ];
 
 function Cafe() {
-	const [cafeList, setCafeList] = useState;
+	const [cafeList, setCafeList] = useState(data);
+	const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
+
+	function onFavoritesChange(isFavoriteSelected) {
+		setShowOnlyFavorites(isFavoriteSelected);
+		isFavoriteSelected
+			? setCafeList(data.filter((cafe) => cafe.isFavorite))
+			: setCafeList(data);
+	}
+
 	return (
 		<SafeAreaView>
-			<Switch />
-			<FlatList />
+			<View style={{ margin: 10 }}>
+				<Text>Show Only Favorites - FILTER</Text>
+				<Switch
+					value={showOnlyFavorites}
+					onValueChange={onFavoritesChange}
+				/>
+			</View>
+			<FlatList
+				data={cafeList}
+				renderItem={({ item }) => (
+					<Text style={{ fontSize: 25, color: "black" }}>
+						{item.name}
+					</Text>
+				)}
+			/>
 		</SafeAreaView>
 	);
 }

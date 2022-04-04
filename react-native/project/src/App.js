@@ -17,6 +17,7 @@ import Banner from "./components/Banner";
 import news_banner_data from "./news_banner_data.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Cafe from "./components/Cafe";
 
 function CardScreen({ navigation }) {
 	return (
@@ -40,6 +41,11 @@ function CardScreen({ navigation }) {
 			}}
 		>
 			<Text>Home Screen</Text>
+			<Button
+				title="Go to Cafe"
+				onPress={() => navigation.navigate("Cafe")}
+			/>
+			<Text></Text>
 			<Button
 				title="Go to Details"
 				onPress={() => navigation.navigate("Details")}
@@ -102,6 +108,7 @@ function App() {
 					options={{ title: "Overview" }}
 				/>
 				<Stack.Screen name="Details" component={DetailsScreen} />
+				<Stack.Screen name="Cafe" component={Cafe} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
