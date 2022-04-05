@@ -18,6 +18,8 @@ import news_banner_data from "./news_banner_data.json";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Cafe from "./components/Cafe";
+import LifeCycle from "./components/LifeCycle";
+import MusicApp from "./components/MusicApp";
 
 function CardScreen({ navigation }) {
 	return (
@@ -49,6 +51,16 @@ function CardScreen({ navigation }) {
 			<Button
 				title="Go to Details"
 				onPress={() => navigation.navigate("Details")}
+			/>
+			<Text></Text>
+			<Button
+				title="Go to LifeCycle"
+				onPress={() => navigation.navigate("LifeCycle")}
+			/>
+			<Text></Text>
+			<Button
+				title="Go to MusicApp"
+				onPress={() => navigation.navigate("MusicApp")}
 			/>
 		</View>
 	);
@@ -109,6 +121,8 @@ function App() {
 				/>
 				<Stack.Screen name="Details" component={DetailsScreen} />
 				<Stack.Screen name="Cafe" component={Cafe} />
+				<Stack.Screen name="LifeCycle" component={LifeCycle} />
+				<Stack.Screen name="MusicApp" component={MusicApp} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
