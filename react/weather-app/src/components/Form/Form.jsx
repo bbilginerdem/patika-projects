@@ -10,8 +10,8 @@ const Form = ({ submitSearch }) => {
         e.preventDefault();
         if (!location || location === '') return;
         submitSearch(location);
-
     }
+
     return (
         <form onSubmit={onSubmit}>
             <input

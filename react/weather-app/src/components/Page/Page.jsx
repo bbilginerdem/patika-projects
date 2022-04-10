@@ -14,23 +14,24 @@ const Page = () => {
     const { isError, isLoading, forecast, submitRequest } = useForecast();
 
     const onSubmit = (value) => {
-        // call fn here
         submitRequest(value);
-    }
+    };
 
     return (
         <Fragment>
             <Header />
-            <div className={`${styles.box} position-relative`}>
-                {/* Form */}
-                {!isLoading && <Form submitSearch={onSubmit} />}
-                {/* Error */}
-                {isError && <Error message={isError} />}
-                {/* Loader */}
-                {isLoading && <Loader />}
-                {/* Forecast */}
-            </div>
-            {forecast && <Forecast />}
+            {!forecast && (
+                <div className={`${styles.box} position-relative`}>
+                    {/* Form */}
+                    {!isLoading && <Form submitSearch={onSubmit} />}
+                    {/* Error */}
+                    {isError && <Error message={isError} />}
+                    {/* Loader */}
+                    {isLoading && <Loader />}
+                    {/* Forecast */}
+                </div>
+            )}
+            {forecast && <Forecast forecast={forecast} />}
         </Fragment>
     );
 };
