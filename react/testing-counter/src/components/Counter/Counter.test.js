@@ -13,9 +13,7 @@ describe("Counter Tests", () => {
 		count = screen.getByText("0");
 	});
 
-	beforeAll(() => {
-		console.log("Bir kere");
-	});
+	beforeAll(() => {});
 
 	test("increase btn", () => {
 		userEvent.click(increaseBtn);

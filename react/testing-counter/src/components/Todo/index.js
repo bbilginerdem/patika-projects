@@ -18,7 +18,10 @@ function Todo() {
 
 	return (
 		<div>
-			<input value={text} onChange={(e) => setText(e.target.value)} />
+      <label>
+        Text
+				<input value={text} onChange={(e) => setText(e.target.value)} />
+			</label>
 			<button onClick={addItem}>Add</button>
 			<br />
 			<br />
