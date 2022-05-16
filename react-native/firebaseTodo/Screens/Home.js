@@ -94,6 +94,9 @@ const Home = () => {
 					<View style={styles.todo}>
 						<Pressable
 							style={styles.container}
+							onPress={() =>
+								navigation.navigate("Detail", { item })
+							}
 						>
 							<FontAwesome
 								name="trash-o"
