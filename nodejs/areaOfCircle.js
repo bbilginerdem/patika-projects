@@ -1,8 +1,18 @@
-const arguments = process.argv.slice(2);
+// const arguments = process.argv.slice(2);
 
-function areaOfCircle(radius) {
+function circleArea(radius) {
 	let area = Math.PI * radius * radius;
 	console.log("Radius: " + radius + ", Area: " + area);
 }
 
-areaOfCircle(parseInt(arguments[0]));
+// circleArea(parseInt(arguments[0]));
+
+function circleCircumference(radius) {
+	let circumference = 2 * Math.PI * radius;
+	console.log("Radius: " + radius + ", Circumference: " + circumference);
+}
+
+module.exports = {
+	circleArea,
+	circleCircumference,
+};
