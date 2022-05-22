@@ -1,9 +1,33 @@
-// const circle = require("./areaOfCircle");
+const fs = require("fs");
 
-// circle.circleArea(5);
-// circle.circleCircumference(5);
+const json = JSON.stringify({ name: "Employee 1 Name", salary: 2000 });
 
-const { circleArea, circleCircumference } = require("./areaOfCircle");
+// Write a file
 
-circleArea(5);
-circleCircumference(5);
+// fs.writeFile("employees.json", json, "utf8", (err, data) => {
+// 	if (err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(data);
+// 	}
+// });
+
+// Read a file
+
+// fs.readFile("employees.json", "utf8", (err, data) => {
+// 	if (err) {
+// 		console.log(err);
+// 	} else {
+// 		console.log(data);
+// 	}
+// });
+
+// Delete
+
+fs.unlink("employees.json", (err, data) => {
+	if (err) {
+		console.log(err);
+	} else {
+		console.log(data);
+	}
+});
