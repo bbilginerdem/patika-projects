@@ -1,25 +1,26 @@
 const express = require("express");
+const ejs = require("ejs");
 const path = require("path");
 
 const app = express();
 
-const myLogger = (req, res, next) => {
-	console.log("Middleware Log 1");
-	next();
-};
-
-const myLogger2 = (req, res, next) => {
-	console.log("Middleware Log 2");
-	next();
-};
+// TEMPLATE ENGINE
+app.set("view engine", "ejs");
 
 // MIDDLEWARES
 app.use(express.static("public"));
-app.use(myLogger);
-app.use(myLogger2);
 
+// ROUTES
 app.get("/", (req, res) => {
-	res.sendFile(path.resolve(__dirname, "public/index.html"));
+	res.render("index");
+});
+
+app.get("/about", (req, res) => {
+	res.render("about");
+});
+
+app.get("/add-photo", (req, res) => {
+	res.render("add-photo");
 });
 
 const port = 3000;
