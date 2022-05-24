@@ -9,10 +9,7 @@ const Photo = require("./models/Photo");
 const app = express();
 
 // connect DB
-mongoose.connect("mongodb://localhost/pcat-test-db", {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost/pcat-test-db");
 
 // TEMPLATE ENGINE
 app.set("view engine", "ejs");
@@ -23,8 +20,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // ROUTES
-app.get("/", (req, res) => {
-	res.render("index");
+app.get("/", async (req, res) => {
+	const photos = await Photo.find({});
+	res.render("index", {
+		photos: photos,
+	});
 });
 
 app.get("/about", (req, res) => {
@@ -36,7 +36,7 @@ app.get("/add-photo", (req, res) => {
 });
 
 app.post("/photos", async (req, res) => {
-	Photo.create(req.body);
+	await Photo.create(req.body);
 	res.redirect("/");
 });
 
