@@ -9,7 +9,16 @@ const pageController = require("./controllers/pageController");
 const app = express();
 
 // connect DB
-mongoose.connect("mongodb://localhost/pcat-test-db");
+mongoose
+	.connect(
+		"mongodb+srv://pcat-project:FZ1WUOXIC9Vy4dxL@pcatcluster.opkudp3.mongodb.net/?retryWrites=true&w=majority"
+	)
+	.then(() => {
+		console.log("DB connected");
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
 // TEMPLATE ENGINE
 app.set("view engine", "ejs");
@@ -36,5 +45,5 @@ app.get("/about", pageController.getAboutPage);
 app.get("/add-photo", pageController.getAddPhotoPage);
 app.get("/photos/edit/:id", pageController.getEditPage);
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {});
